@@ -24,13 +24,13 @@ const Education = () => {
     {
       degree: 'Secondary School',
       institution: 'Bangladesh International School & College',
-      year: '2014 - 2015',
+      year: '2013 - 2015',
       icon: 'fa-book-reader',
     },
     {
       degree: 'Primary School',
       institution: 'Bangladesh International School & College',
-      year: '2008 - 2013',
+      year: '2008 - 2012',
       icon: 'fa-child',
     },
   ];
