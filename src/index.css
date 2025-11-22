@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #38bdf8;
+  --secondary-color: #818cf8;
+  --accent-color: #f472b6;
+  --background-color: #0f172a;
+  --surface-color: #1e293b;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --font-main: "Outfit", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Scroll margin for sections to account for fixed navbar */
+section[id], header[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  @apply glass rounded-2xl p-6 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/20;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Background Gradient Animation */
+.background-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(56, 189, 248, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(192, 132, 252, 0.15) 0%,
+      transparent 40%
+    );
+  z-index: -1;
+}
+
+/* Animation Classes */
+.fade-in-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive Cat Background */
+.cat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.cat-wrapper {
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+
+.cat-1, .cat-2 {
+    font-size: 3rem;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease;
+}
+
+.cat-1 {
+    color: var(--primary-color);
+    left: 20px;
+}
+
+.cat-2 {
+    color: var(--accent-color);
+    right: 20px;
+    transform: scaleX(-1);
+}
+
+.prop {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* States */
+/* Playing */
+.cat-container.playing .cat-1 {
+    animation: bounce 1s infinite alternate;
+}
+
+.cat-container.playing .cat-2 {
+    transform: scaleX(-1); /* Mirror the cat */
+    animation: bounce-mirrored 1s infinite alternate-reverse;
+}
+
+.cat-container.playing .game-controller {
+    opacity: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    animation: pulse-glow 0.8s infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+/* Looking */
+.cat-container.looking .cat-1 {
+    transform: translateY(0) rotate(0deg);
+    left: 40px;
+}
+
+.cat-container.looking .cat-2 {
+    transform: translateY(0) scaleX(-1) rotate(0deg);
+    right: 40px;
+}
+
+/* Studying */
+.cat-container.studying .cat-1 {
+    left: 10px;
+    transform: rotate(-10deg);
+}
+
+.cat-container.studying .cat-2 {
+    right: 10px;
+    transform: scaleX(-1) rotate(-10deg);
+}
+
+.cat-container.studying .book {
+    opacity: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    animation: pulse-glow 1s infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+/* Researching */
+.cat-container.researching .cat-1 {
+    left: 10px;
+    transform: rotate(-10deg);
+}
+
+.cat-container.researching .cat-2 {
+    right: 10px;
+    transform: scaleX(-1) rotate(-10deg);
+}
+
+.cat-container.researching .microscope {
+    opacity: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    animation: pulse-glow 1s infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+/* Talking */
+.cat-container.talking .cat-1 {
+    left: 30px; /* Brought closer */
+    transform: rotate(10deg);
+}
+
+.cat-container.talking .cat-2 {
+    right: 30px; /* Brought closer */
+    transform: scaleX(-1) rotate(10deg);
+}
+
+.cat-container.talking .speech-bubble-1 {
+    opacity: 1;
+    top: 20px; /* Lowered */
+    left: 40px; /* Moved closer to center */
+    color: #fff;
+    animation: fadeTalk 2s infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+.cat-container.talking .speech-bubble-2 {
+    opacity: 1;
+    top: 30px; /* Lowered */
+    right: 40px; /* Moved closer to center */
+    color: #fff;
+    animation: fadeTalk 2s infinite 1s;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+/* Animations */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+
+@keyframes bounce-mirrored {
+    0% { transform: translateY(0) scaleX(-1); }
+    100% { transform: translateY(-20px) scaleX(-1); }
+}
+
+@keyframes pulse-glow {
+    0% { 
+        transform: translateX(-50%) scale(1); 
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    }
+    100% { 
+        transform: translateX(-50%) scale(1.2); 
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1));
+    }
+}
+
+@keyframes fadeTalk {
+    0%, 100% { opacity: 0; transform: translateY(10px); }
+    50% { opacity: 1; transform: translateY(0); }
+}
