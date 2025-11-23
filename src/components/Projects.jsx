@@ -13,45 +13,61 @@ const Projects = () => {
       title: 'Web CV',
       description: 'This responsive portfolio website built with React and Tailwind CSS.',
       tags: ['React', 'Tailwind CSS', 'JavaScript'],
-      link: '#',
+      link: 'https://github.com/Shifty404/shifty404.github.io',
     },
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-20">
+    <section id="projects" className="py-20 px-4 md:px-20 relative">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center mb-12 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mx-auto after:mt-4 after:rounded-sm"
+        className="text-4xl md:text-5xl font-bold text-center mb-16"
       >
-        GitHub Projects
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+          GitHub Projects
+        </span>
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card bg-surface/50 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300"
+            className="glass-card group relative overflow-hidden border border-white/5 hover:border-primary/30"
           >
-            <h3 className="text-2xl font-bold mb-4 text-primary">{project.title}</h3>
-            <p className="text-muted mb-6">{project.description}</p>
-            <div className="flex gap-2 mb-6">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-cyan-300 transition-colors">
+              {project.title}
+            </h3>
+            
+            <p className="text-text-muted mb-6 leading-relaxed">
+              {project.description}
+            </p>
+            
+            <div className="flex flex-wrap gap-2 mb-8">
               {project.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
+                <span 
+                  key={tag} 
+                  className="px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary bg-primary/10 rounded-full border border-primary/20"
+                >
                   {tag}
                 </span>
               ))}
             </div>
+            
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-text font-semibold hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-text font-semibold hover:text-primary transition-colors group/link"
             >
-              <i className="fab fa-github"></i> View Code
+              <i className="fab fa-github text-xl"></i> 
+              <span className="group-hover/link:translate-x-1 transition-transform">View Code</span>
             </a>
           </motion.div>
         ))}

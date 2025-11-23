@@ -15,61 +15,74 @@ const Navbar = ({ activeSection }) => {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
-    smoothScrollTo(href, 2000); // 2000ms duration for slow scroll
+    smoothScrollTo(href, 2000);
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[9999] bg-background/95 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/10 transition-all duration-300">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        {/* Logo on the Left */}
-        <div className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer" style={{ fontFamily: "'Press Start 2P', cursive" }} onClick={(e) => handleNavClick(e, '#hero')}>
-          Shifty's Portfolio
+    <>
+      {/* Desktop Floating Navbar */}
+      <nav className="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-[9999] glass rounded-full px-8 py-4 items-center gap-8 shadow-lg shadow-primary/10 border border-white/10 transition-all duration-300 hover:shadow-primary/20">
+        <div 
+          className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer hover:scale-105 transition-transform" 
+          style={{ fontFamily: "'Press Start 2P', cursive" }} 
+          onClick={(e) => handleNavClick(e, '#hero')}
+        >
+          Shifty
         </div>
 
-        {/* Desktop Menu on the Right */}
-        <ul className="hidden md:flex gap-6 lg:gap-8 items-center">
+        <ul className="flex gap-8 items-center">
           {navLinks.map((link) => (
             <li key={link.name} className="list-none">
               <a
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-lg font-medium transition-colors duration-300 hover:text-primary no-underline ${
-                  activeSection === link.href.substring(1) ? 'text-primary' : 'text-text'
+                className={`text-sm font-medium uppercase tracking-wider transition-all duration-300 hover:text-primary relative group ${
+                  activeSection === link.href.substring(1) ? 'text-primary' : 'text-text-muted hover:text-text'
                 }`}
               >
                 {link.name}
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${activeSection === link.href.substring(1) ? 'w-full' : ''}`}></span>
               </a>
             </li>
           ))}
         </ul>
+      </nav>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden text-2xl cursor-pointer text-text" onClick={toggleMenu}>
+      {/* Mobile Navbar (Fixed Top) */}
+      <nav className="md:hidden fixed top-0 left-0 w-full z-[9999] glass border-b border-white/10 px-4 py-4 flex justify-between items-center">
+        <div 
+          className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary" 
+          style={{ fontFamily: "'Press Start 2P', cursive" }}
+          onClick={(e) => handleNavClick(e, '#hero')}
+        >
+          Shifty
+        </div>
+        <div className="text-2xl cursor-pointer text-text" onClick={toggleMenu}>
           <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'}`}></i>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="absolute top-full left-0 w-full bg-[#0f172a] bg-opacity-98 backdrop-blur-md flex flex-col items-center gap-6 py-8 border-b border-white/10 shadow-xl shadow-black/20 md:hidden animate-fadeIn">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-xl font-medium transition-colors duration-300 hover:text-primary ${
-                  activeSection === link.href.substring(1) ? 'text-primary' : 'text-text'
-                }`}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </nav>
+        {/* Mobile Menu Dropdown */}
+        <div className={`absolute top-full left-0 w-full glass border-b border-white/10 transition-all duration-300 origin-top ${isOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'}`}>
+          <ul className="flex flex-col items-center gap-6 py-8">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-lg font-medium ${
+                    activeSection === link.href.substring(1) ? 'text-primary' : 'text-text'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 };
 
