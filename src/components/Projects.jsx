@@ -64,7 +64,7 @@ const Projects = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-text font-semibold hover:text-primary transition-colors group/link"
+              className="relative z-10 inline-flex items-center gap-2 text-text font-semibold hover:text-primary transition-colors group/link"
             >
               <i className="fab fa-github text-xl"></i> 
               <span className="group-hover/link:translate-x-1 transition-transform">View Code</span>

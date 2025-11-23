@@ -71,16 +71,18 @@ const Hero = () => {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="px-8 py-3 rounded-full bg-primary text-background font-bold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all duration-300 hover:-translate-y-1"
+            className="group relative px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-background font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)]"
           >
-            Get in Touch
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300">Get in Touch</span>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </a>
           <a
             href="#projects"
             onClick={(e) => handleNavClick(e, '#projects')}
-            className="px-8 py-3 rounded-full bg-transparent border border-primary/50 text-primary font-bold hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300 hover:-translate-y-1"
+            className="group relative px-8 py-3 rounded-full glass border border-primary/30 text-primary font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:border-primary hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
           >
-            View Work
+            <span className="relative z-10 group-hover:text-accent transition-colors duration-300">View Work</span>
+            <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </a>
         </div>
       </div>
