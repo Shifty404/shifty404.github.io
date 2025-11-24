@@ -58,7 +58,7 @@ const Hero = () => {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-          Hello, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-gradient">Shifty</span>
+          Hello, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent bg-200% animate-gradient">Shifty</span>
         </h1>
         
         <div className="h-10 mb-10">
