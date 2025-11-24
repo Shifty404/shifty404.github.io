@@ -7,6 +7,7 @@ import Research from './components/Research';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CatAnimation from './components/CatAnimation';
+import Background from './components/Background';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -72,7 +73,7 @@ function App() {
 
   return (
     <div className="min-h-screen text-text font-sans selection:bg-primary/30">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_10%_20%,rgba(56,189,248,0.15)_0%,transparent_40%),radial-gradient(circle_at_90%_80%,rgba(192,132,252,0.15)_0%,transparent_40%)]"></div>
+      <Background />
       
       <Navbar activeSection={activeSection} />
       <CatAnimation activeSection={activeSection} />
