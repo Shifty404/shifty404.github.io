@@ -29,7 +29,7 @@ const Navbar = ({ activeSection }) => {
           style={{ fontFamily: "'Press Start 2P', cursive" }} 
           onClick={(e) => handleNavClick(e, '#hero')}
         >
-          Shifty
+          Shifty's Portfolio
         </div>
 
         <ul className="flex gap-8 items-center">
@@ -57,7 +57,7 @@ const Navbar = ({ activeSection }) => {
           style={{ fontFamily: "'Press Start 2P', cursive" }}
           onClick={(e) => handleNavClick(e, '#hero')}
         >
-          Shifty
+          Shifty's Portfolio
         </div>
         <div className="text-2xl cursor-pointer text-text" onClick={toggleMenu}>
           <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'}`}></i>
