@@ -52,13 +52,14 @@ const Education = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card flex flex-col md:flex-row gap-8 items-start p-8"
+            className="glass-card group relative overflow-hidden border border-white/5 hover:border-primary/30 flex flex-col md:flex-row gap-8 items-start p-8"
           >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="text-3xl text-primary bg-primary/10 p-4 rounded-xl min-w-[80px] text-center">
               <i className={`fas ${edu.icon}`}></i>
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-2 text-text">{edu.degree}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-text group-hover:text-cyan-300 transition-colors">{edu.degree}</h3>
               <p className="text-primary font-semibold mb-1">{edu.institution}</p>
               <p className="text-muted italic">{edu.year}</p>
             </div>

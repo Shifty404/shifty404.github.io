@@ -17,8 +17,9 @@ const Contact = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="glass-card p-12 flex flex-col gap-6 min-w-[300px] md:min-w-[500px]"
+          className="glass-card group relative overflow-hidden border border-white/5 hover:border-primary/30 p-12 flex flex-col gap-6 min-w-[300px] md:min-w-[500px]"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="flex items-center gap-4 text-xl">
             <i className="fas fa-envelope text-primary text-2xl w-8"></i>
             <span>Shifty.ishmam@gmail.com</span>

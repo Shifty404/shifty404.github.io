@@ -28,13 +28,14 @@ const Research = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card flex flex-col md:flex-row gap-8 items-start p-8"
+            className="glass-card group relative overflow-hidden border border-white/5 hover:border-primary/30 flex flex-col md:flex-row gap-8 items-start p-8"
           >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="text-3xl text-accent bg-accent/10 p-4 rounded-xl min-w-[80px] text-center">
               <i className={`fas ${paper.icon}`}></i>
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-2">{paper.title}</h3>
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition-colors">{paper.title}</h3>
               <p className="text-secondary italic mb-4">{paper.journal}</p>
               <p className="text-muted mb-4">{paper.abstract}</p>
               <a href="https://link.springer.com/chapter/10.1007/978-981-96-8796-1_7" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">

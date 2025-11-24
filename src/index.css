@@ -156,7 +156,7 @@ section[id], header[id] {
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     animation: pulse-glow 0.8s infinite alternate;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 }
@@ -218,31 +218,32 @@ section[id], header[id] {
 
 /* Talking */
 .cat-container.talking .cat-1 {
-    left: 30px; /* Brought closer */
+    left: 30px;
     transform: rotate(10deg);
 }
 
 .cat-container.talking .cat-2 {
-    right: 30px; /* Brought closer */
+    right: 30px;
     transform: scaleX(-1) rotate(10deg);
 }
 
 .cat-container.talking .speech-bubble-1 {
-    opacity: 1;
-    top: 20px; /* Lowered */
-    left: 40px; /* Moved closer to center */
-    color: #fff;
-    animation: fadeTalk 2s infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  opacity: 0;
+  top: 50px;
+  left: 80px;
+  color: #fff;
+  animation: talkCycle 2.4s infinite 1.2s; 
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
 }
 
 .cat-container.talking .speech-bubble-2 {
-    opacity: 1;
-    top: 30px; /* Lowered */
-    right: 40px; /* Moved closer to center */
-    color: #fff;
-    animation: fadeTalk 2s infinite 1s;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  opacity: 0;
+  top: 50px;
+  right: 80px;
+  color: #fff;
+  animation: talkCycleMirrored 2.4s infinite 0s; 
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  transform: scaleX(-1);
 }
 
 /* Animations */
@@ -267,7 +268,20 @@ section[id], header[id] {
     }
 }
 
-@keyframes fadeTalk {
-    0%, 100% { opacity: 0; transform: translateY(10px); }
-    50% { opacity: 1; transform: translateY(0); }
+/* Standard Cycle (Blue Cat) */
+@keyframes talkCycle {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }    /* Fade In */
+  40% { opacity: 1; transform: translateY(0); }    /* Stay Visible */
+  50% { opacity: 0; transform: translateY(10px); } /* Fade Out */
+  100% { opacity: 0; transform: translateY(10px); } /* Remain Hidden */
+}
+
+/* Mirrored Cycle (Pink Cat) - Preserves scaleX(-1) */
+@keyframes talkCycleMirrored {
+  0% { opacity: 0; transform: translateY(10px) scaleX(-1); }
+  10% { opacity: 1; transform: translateY(0) scaleX(-1); }    /* Fade In */
+  40% { opacity: 1; transform: translateY(0) scaleX(-1); }    /* Stay Visible */
+  50% { opacity: 0; transform: translateY(10px) scaleX(-1); } /* Fade Out */
+  100% { opacity: 0; transform: translateY(10px) scaleX(-1); } /* Remain Hidden */
 }
