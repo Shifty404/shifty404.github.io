@@ -8,6 +8,7 @@ const Research = () => {
       journal: 'ICT for Intelligent Systems, Volumn 11, pp 73–83, 2025',
       abstract: 'Communication is a fundamental human right, yet individuals with hearing or speech impairments face barriers in education, employment, and social services.',
       icon: 'fa-book-open',
+      link: 'https://link.springer.com/chapter/10.1007/978-981-96-8796-1_7',
     },
   ];
 
@@ -38,8 +39,14 @@ const Research = () => {
               <h3 className="text-2xl font-bold mb-2 group-hover:text-cyan-300 transition-colors">{paper.title}</h3>
               <p className="text-secondary italic mb-4">{paper.journal}</p>
               <p className="text-muted mb-4">{paper.abstract}</p>
-              <a href="https://link.springer.com/chapter/10.1007/978-981-96-8796-1_7" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-                Read Paper <i className="fas fa-arrow-right"></i>
+              <a
+                href={paper.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 inline-flex items-center gap-2 text-text font-semibold hover:text-primary transition-colors group/link"
+              >
+                <i className="fas fa-book-open text-xl"></i> 
+                <span className="group-hover/link:translate-x-1 transition-transform">Read Paper</span>
               </a>
             </div>
           </motion.div>
