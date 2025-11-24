@@ -18,9 +18,11 @@ const Research = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center mb-12 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-accent after:mx-auto after:mt-4 after:rounded-sm"
+        className="text-4xl md:text-5xl font-bold text-center mb-16"
       >
-        Published Research
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+          Published Research
+        </span>
       </motion.h2>
       <div className="flex flex-col gap-8 max-w-4xl mx-auto">
         {papers.map((paper, index) => (
